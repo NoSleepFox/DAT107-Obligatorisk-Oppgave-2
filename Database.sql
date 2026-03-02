@@ -3,31 +3,31 @@
 
 create table MEDLEM (
     medlemsnummer INT PRIMARY KEY,
-    fornavn VARCHAR(50),
-    etternavn VARCHAR(50),
+    fornavn VARCHAR(50) NOT NULL,
+    etternavn VARCHAR(50) NOT NULL,
     telefonnummer VARCHAR(20),
     epost VARCHAR(100),
-    postnummer VARCHAR(4),
-    gatenavn VARCHAR(50),
-    er_aktiv BOOLEAN,
-    lag_id INT,
+    postnummer VARCHAR(4) NOT NULL,
+    gatenavn VARCHAR(50) NOT NULL,
+    er_aktiv BOOLEAN NOT NULL,
+    lag_id INT NOT NULL,
     FOREIGN KEY (lag_id) references LOKALLAG(lag_id)
 );
 
 create table LOKALLAG (
     lag_id INT PRIMARY KEY,
-    lagnavn VARCHAR(100),
-    leder_medlemsnummer INT,
-    postnummer VARCHAR(4),
-    gatenavn VARCHAR(50),
+    lagnavn VARCHAR(100) NOT NULL,
+    leder_medlemsnummer INT NOT NULL,
+    postnummer VARCHAR(4) NOT NULL,
+    gatenavn VARCHAR(50) NOT NULL,
     FOREIGN KEY (leder_medlemsnummer) references MEDLEM(medlemsnummer)
 );
 
 create table BETALING (
-    medlemsnummer INT,
-    aar INT,
+    medlemsnummer INT NOT NULL,
+    aar INT NOT NULL,
     PRIMARY KEY (medlemsnummer, aar),
-    betalt BOOLEAN,
+    betalt BOOLEAN NOT NULL,
     betalingsdato DATE,
     FOREIGN KEY (medlemsnummer) references MEDLEM(medlemsnummer)
 );
