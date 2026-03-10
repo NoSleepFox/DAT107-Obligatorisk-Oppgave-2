@@ -10,13 +10,12 @@ create table MEDLEM (
     postnummer VARCHAR(4) NOT NULL,
     gatenavn VARCHAR(50) NOT NULL,
     er_aktiv BOOLEAN NOT NULL,
-    lag_id INT NOT NULL,
-    FOREIGN KEY (lag_id) references LOKALLAG(lag_id)
+    lagnavn INT NOT NULL,
+    FOREIGN KEY (lagnavn) references LOKALLAG(lagnavn)
 );
 
 create table LOKALLAG (
-    lag_id INT PRIMARY KEY,
-    lagnavn VARCHAR(100) NOT NULL,
+    lagnavn VARCHAR(100) PRIMARY KEY,
     leder_medlemsnummer INT NOT NULL,
     postnummer VARCHAR(4) NOT NULL,
     gatenavn VARCHAR(50) NOT NULL,
